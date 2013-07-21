@@ -1,0 +1,26 @@
+Add flows in switch
+dpctl add-flow tcp:127.0.0.1:6634 in_port=1,idle_timeout=0,actions=output:2
+dpctl add-flow tcp:127.0.0.1:6634 in_port=2,idle_timeout=0,actions=output:3
+dpctl add-flow tcp:127.0.0.1:6634 in_port=3,idle_timeout=0,actions=output:1
+
+
+Display flows in switch
+dpctl dump-flows tcp:127.0.0.1:6634
+
+Clear flows from switch
+dpctl del-flows tcp:127.0.0.1:6634
+
+
+
+
+flow-mod cmd=add,table=0 ip_src=192.168.0.1,ip_dst=172.40.56.101/24 apply:nw_dec,output=3
+
+dpctl mod-flow table=0,cmd=add ip_src=10.0.0.1 apply:set_field=ipv4_dst=10.0.0.2
+
+
+dpctl mod-flow table=0,cmd=add nw_src=10.0.0.1 actions=mod_apply:set_field=ipv4_dst=10.0.0.2
+
+
+w3.org -> 128.30.52.45
+
+
